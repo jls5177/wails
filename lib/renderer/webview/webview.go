@@ -94,6 +94,9 @@ static inline void _webview_dispatch_cb(struct webview *w, void *arg) {
 static inline void CgoWebViewDispatch(void *w, uintptr_t arg) {
 	webview_dispatch((struct webview *)w, _webview_dispatch_cb, (void *)arg);
 }
+static inline const char* CgoWebViewUrl(void *w) {
+	return webview_url((struct webview *)w);
+}
 */
 import "C"
 import (
@@ -197,6 +200,8 @@ type WebView interface {
 	// Exit() closes the window and cleans up the resources. Use Terminate() to
 	// forcefully break out of the main UI loop.
 	Exit()
+	// Url() returns the current URL in the Webview
+	Url() string
 }
 
 // DialogType is an enumeration of all supported system dialog types
@@ -344,6 +349,14 @@ func (w *webview) InjectCSS(css string) {
 
 func (w *webview) Terminate() {
 	C.CgoWebViewTerminate(w.w)
+}
+
+func (w *webview) Url() string {
+	url := (*C.char)(C.CgoWebViewUrl(w.w))
+	if runtime.GOOS != "darwin" {
+		defer C.free(unsafe.Pointer(url))
+	}
+	return C.GoString(url)
 }
 
 //export _webviewDispatchGoCallback
