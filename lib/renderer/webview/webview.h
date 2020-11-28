@@ -181,6 +181,7 @@ struct webview_priv
   WEBVIEW_API void webview_exit(struct webview *w);
   WEBVIEW_API void webview_debug(const char *format, ...);
   WEBVIEW_API void webview_print_log(const char *s);
+  WEBVIEW_API const char* webview_url(struct webview *w);
 
 #ifdef WEBVIEW_IMPLEMENTATION
 #undef WEBVIEW_IMPLEMENTATION
@@ -555,6 +556,10 @@ struct webview_priv
   WEBVIEW_API void webview_print_log(const char *s)
   {
     fprintf(stderr, "%s\n", s);
+  }
+
+  const char* webview_url(struct webview *w) {
+      return strdup(webkit_web_view_get_uri(WEBKIT_WEB_VIEW(w->priv.webview)).c_str());
   }
 
 #endif /* WEBVIEW_GTK */
@@ -1930,6 +1935,11 @@ struct webview_priv
   WEBVIEW_API void webview_exit(struct webview *w) { OleUninitialize(); }
   WEBVIEW_API void webview_print_log(const char *s) { OutputDebugString(s); }
 
+  const char* webview_url(struct webview *w) {
+    // TODO: add windows support
+    return null;
+  }
+
 #endif /* WEBVIEW_WINAPI */
 
 #if defined(WEBVIEW_COCOA)
@@ -2352,6 +2362,10 @@ struct webview_priv
   }
   WEBVIEW_API void webview_exit(struct webview *w) { [NSApp terminate:NSApp]; }
   WEBVIEW_API void webview_print_log(const char *s) { NSLog(@"%s", s); }
+
+  WEBVIEW_API const char* webview_url(struct webview *w) {
+    return [[w->priv.webview mainFrameURL] UTF8String];
+  }
 
 #endif /* WEBVIEW_COCOA */
 
