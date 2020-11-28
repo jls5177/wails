@@ -1,6 +1,6 @@
 package runtime
 
-import "github.com/wailsapp/wails/lib/interfaces"
+import "github.com/jls5177/wails/lib/interfaces"
 
 // Runtime is the Wails Runtime Interface, given to a user who has defined the WailsInit method
 type Runtime struct {

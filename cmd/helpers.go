@@ -575,10 +575,10 @@ func ldFlags(po *ProjectOptions, buildMode string) string {
 	}
 
 	if po.UseFirebug {
-		ldflags += "-X github.com/wailsapp/wails/lib/renderer.UseFirebug=true "
+		ldflags += "-X github.com/jls5177/wails/lib/renderer.UseFirebug=true "
 	}
 
-	ldflags += "-X github.com/wailsapp/wails.BuildMode=" + buildMode
+	ldflags += "-X github.com/jls5177/wails.BuildMode=" + buildMode
 
 	// Add additional ldflags passed in via the `ldflags` cli flag
 	if len(po.LdFlags) > 0 {
@@ -590,7 +590,7 @@ func ldFlags(po *ProjectOptions, buildMode string) string {
 		cwd, err := os.Getwd()
 		if err == nil {
 			filename := filepath.Join(cwd, po.FrontEnd.Dir, po.typescriptDefsFilename)
-			ldflags += " -X github.com/wailsapp/wails/lib/binding.typescriptDefinitionFilename=" + filename
+			ldflags += " -X github.com/jls5177/wails/lib/binding.typescriptDefinitionFilename=" + filename
 		}
 	}
 	return ldflags
