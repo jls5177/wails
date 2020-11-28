@@ -11,7 +11,7 @@ import (
 
 	"github.com/Masterminds/semver"
 	"github.com/leaanthony/spinner"
-	"github.com/wailsapp/wails/cmd"
+	"github.com/jls5177/wails/cmd"
 )
 
 // Constants
@@ -300,7 +300,7 @@ func updateWailsVersion(currentVersion, latestVersion *semver.Version) error {
 	// Patch go.mod
 	checkSpinner.Start("Patching go.mod")
 
-	wailsModule := "github.com/wailsapp/wails"
+	wailsModule := "github.com/jls5177/wails"
 	old := fmt.Sprintf("%s v%s", wailsModule, currentVersion)
 	new := fmt.Sprintf("%s v%s", wailsModule, latestVersion)
 

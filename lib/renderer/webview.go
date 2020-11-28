@@ -10,10 +10,10 @@ import (
 
 	"github.com/go-playground/colors"
 	"github.com/leaanthony/mewn"
-	"github.com/wailsapp/wails/lib/interfaces"
-	"github.com/wailsapp/wails/lib/logger"
-	"github.com/wailsapp/wails/lib/messages"
-	wv "github.com/wailsapp/wails/lib/renderer/webview"
+	"github.com/jls5177/wails/lib/interfaces"
+	"github.com/jls5177/wails/lib/logger"
+	"github.com/jls5177/wails/lib/messages"
+	wv "github.com/jls5177/wails/lib/renderer/webview"
 )
 
 // WebView defines the main webview application window

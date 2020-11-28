@@ -5,14 +5,14 @@ import (
 	"syscall"
 
 	"github.com/syossan27/tebata"
-	"github.com/wailsapp/wails/cmd"
-	"github.com/wailsapp/wails/lib/binding"
-	"github.com/wailsapp/wails/lib/event"
-	"github.com/wailsapp/wails/lib/interfaces"
-	"github.com/wailsapp/wails/lib/ipc"
-	"github.com/wailsapp/wails/lib/logger"
-	"github.com/wailsapp/wails/lib/renderer"
-	wailsruntime "github.com/wailsapp/wails/runtime"
+	"github.com/jls5177/wails/cmd"
+	"github.com/jls5177/wails/lib/binding"
+	"github.com/jls5177/wails/lib/event"
+	"github.com/jls5177/wails/lib/interfaces"
+	"github.com/jls5177/wails/lib/ipc"
+	"github.com/jls5177/wails/lib/logger"
+	"github.com/jls5177/wails/lib/renderer"
+	wailsruntime "github.com/jls5177/wails/runtime"
 )
 
 // -------------------------------- Compile time Flags ------------------------------

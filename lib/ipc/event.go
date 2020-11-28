@@ -3,7 +3,7 @@ package ipc
 import (
 	"encoding/json"
 
-	"github.com/wailsapp/wails/lib/messages"
+	"github.com/jls5177/wails/lib/messages"
 )
 
 // Register the message handler

@@ -1,6 +1,6 @@
 package runtime
 
-import "github.com/wailsapp/wails/lib/interfaces"
+import "github.com/jls5177/wails/lib/interfaces"
 import "strings"
 
 // Dialog exposes an interface to native dialogs

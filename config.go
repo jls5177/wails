@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/leaanthony/mewn"
-	"github.com/wailsapp/wails/runtime"
+	"github.com/jls5177/wails/runtime"
 )
 
 // AppConfig is the configuration structure used when creating a Wails App object

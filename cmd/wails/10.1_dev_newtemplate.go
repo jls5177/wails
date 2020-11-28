@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/wailsapp/wails/cmd"
+	"github.com/jls5177/wails/cmd"
 	"gopkg.in/AlecAivazis/survey.v1"
 )
 
