@@ -1,12 +1,11 @@
 package wails
 
 import (
-	"fmt"
 	"net/url"
 	"strings"
 
-	"github.com/leaanthony/mewn"
 	"github.com/jls5177/wails/runtime"
+	"github.com/leaanthony/mewn"
 )
 
 // AppConfig is the configuration structure used when creating a Wails App object
@@ -136,10 +135,6 @@ func newConfig(userConfig *AppConfig) (*AppConfig, error) {
 			return nil, err
 		}
 	}
-
-	println("****************************************************")
-	fmt.Printf("%+v\n", result)
-	println("****************************************************")
 
 	return result, nil
 }
