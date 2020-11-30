@@ -1986,6 +1986,13 @@ struct webview_priv
     [script setValue:self forKey:@"external"];
   }
 
+  static id createWebViewWithRequest(id self, SEL cmd, id sender, id request)
+  {
+    // TODO: add support to open link in new window instead of current webview
+    [[sender mainFrame] loadRequest:request];
+    return sender;
+  }
+
   static void webview_run_input_open_panel(id self, SEL cmd, id webview,
                                            id listener, BOOL allowMultiple)
   {
@@ -2039,6 +2046,9 @@ struct webview_priv
     class_addMethod(webViewDelegateClass,
                     sel_registerName("webView:didClearWindowObject:forFrame:"),
                     (IMP)webview_did_clear_window_object, "v@:@@@");
+    class_addMethod(webViewDelegateClass,
+                    sel_registerName("webView:createWebViewWithRequest:"),
+                    (IMP)createWebViewWithRequest, "@@:@@");
     class_addMethod(
         webViewDelegateClass,
         sel_registerName("webView:runOpenPanelForFileButtonWithResultListener:"
