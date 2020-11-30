@@ -2236,21 +2236,8 @@ struct webview_priv
                                                        green:(CGFloat)g / 255.0
                                                         blue:(CGFloat)b / 255.0
                                                        alpha:(CGFloat)a / 255.0]];
-    if (0.5 >= ((r / 255.0 * 299.0) + (g / 255.0 * 587.0) + (b / 255.0 * 114.0)) /
-                   1000.0)
-    {
-      [w->priv.window
-          setAppearance:[NSAppearance
-                            appearanceNamed:NSAppearanceNameVibrantDark]];
-    }
-    else
-    {
-      [w->priv.window
-          setAppearance:[NSAppearance
-                            appearanceNamed:NSAppearanceNameVibrantLight]];
-    }
     [w->priv.window setOpaque:NO];
-    [w->priv.window setTitlebarAppearsTransparent:YES];
+    [w->priv.window setTitlebarAppearsTransparent:NO];
     [w->priv.webview setDrawsBackground:NO];
   }
 
