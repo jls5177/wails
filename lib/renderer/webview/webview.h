@@ -1936,8 +1936,29 @@ struct webview_priv
   WEBVIEW_API void webview_print_log(const char *s) { OutputDebugString(s); }
 
   const char* webview_url(struct webview *w) {
-    // TODO: add windows support
-    return NULL;
+    IWebBrowser2 *webBrowser2;
+    IHTMLDocument2 *htmlDoc2;
+    IDispatch *docDispatch;
+    if ((*w->priv.browser)
+            ->lpVtbl->QueryInterface((*w->priv.browser),
+                                     iid_unref(&IID_IWebBrowser2),
+                                     (void **)&webBrowser2) != S_OK)
+    {
+      return NULL;
+    }
+    if (webBrowser2->lpVtbl->get_Document(webBrowser2, &docDispatch) != S_OK)
+    {
+      return NULL;
+    }
+    if (docDispatch->lpVtbl->QueryInterface(docDispatch,
+                                            iid_unref(&IID_IHTMLDocument2),
+                                            (void **)&htmlDoc2) != S_OK)
+    {
+      return NULL;
+    }
+    BSTR url = NULL;
+    htmlDoc2->lpVtbl->get_URL(htmlDoc2, &url);
+    return (url != NULL) ? webview_from_utf16(url) : NULL;
   }
 
 #endif /* WEBVIEW_WINAPI */

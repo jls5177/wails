@@ -97,6 +97,14 @@ static inline void CgoWebViewDispatch(void *w, uintptr_t arg) {
 static inline const char* CgoWebViewUrl(void *w) {
 	return webview_url((struct webview *)w);
 }
+
+static inline void CgoFree(char *p) {
+#ifdef WEBVIEW_WINAPI
+	GlobalFree((HGLOBAL)p);
+#else
+	free(p);
+#endif
+}
 */
 import "C"
 import (
@@ -354,7 +362,7 @@ func (w *webview) Terminate() {
 func (w *webview) Url() string {
 	url := (*C.char)(C.CgoWebViewUrl(w.w))
 	if runtime.GOOS != "darwin" {
-		defer C.free(unsafe.Pointer(url))
+		defer C.CgoFree(url)
 	}
 	return C.GoString(url)
 }
