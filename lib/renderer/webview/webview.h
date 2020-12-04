@@ -1937,7 +1937,7 @@ struct webview_priv
 
   const char* webview_url(struct webview *w) {
     // TODO: add windows support
-    return null;
+    return NULL;
   }
 
 #endif /* WEBVIEW_WINAPI */
